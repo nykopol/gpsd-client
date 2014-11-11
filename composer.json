@@ -11,6 +11,7 @@
             "url": "https://github.com/nykopol/gpsd-client.git"
         }
     ],
+    "license": "LGPL v3",
     "require": {
 	"php": ">=5.3"
     },
