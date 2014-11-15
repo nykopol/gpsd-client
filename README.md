@@ -45,15 +45,17 @@ accept two parameters:
 *$format* `string` (default: `json`) Set the desired format for the returned datas
 
 
-### getNext($class, $buffer = false)
+### getNext($class, $buffer = false, $blocking = true)
 
 Return the next message of the given class. Current service class are `WATCH`,
 `DEVICES`, `DEVICE`, `TPV`, `AIS`.
-The method accept the two parameters:
+The method accept the tree parameters:
 *$class* `string` The wanted class name.
 *$buffer* `bool` (default: `false`) Once the device synced, the service is
 generaly reporting one message per second. This parameter specify if we want the
 next message from the buffer or the next message in the time.
+*$blocking* `bool` (default: `true`) Wait for the next message or return null if
+there is no new message. This option is relevant only if the buffer is enabled.
 
 For exemple, if you are connected to the service since 1 minute, and that the
 sensor is synced, the next message from the buffer is proably old of about 1 minute.

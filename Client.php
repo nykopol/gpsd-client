@@ -91,9 +91,14 @@ class Client
      * Get the next message of the given class (TPV, AIS, SKY, ...)
      * @param string $class Classe name of the desired message
      * @param bool $buffer get the next message from buffer or the next one in time
+     * @param bool $blocking use stream bocking mode or not (block until next or return null if nothing new)
      * @return
      */
-    public function getNext($class, $buffer = false){
+    public function getNext($class, $buffer = false, $blocking = true){
+
+        if(!$buffer && !$blocking){
+            throw new \InvalidArgumentException("If the buffer is not used, blocking mode must be enabled.");
+        }
 
         // flush buffer
         if(!$buffer){
@@ -101,6 +106,8 @@ class Client
             while(fgets($this->stream)){ }
             stream_set_blocking($this->stream, 1);
         }
+
+        stream_set_blocking($this->stream, $blocking ? 1 : 0);
 
         // get next message
         while(1){
