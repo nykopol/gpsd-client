@@ -1,5 +1,7 @@
 # GPSD Client
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/992c4356-685c-4bc7-8a14-5b9a8103adf4/big.png)](https://insight.sensiolabs.com/projects/992c4356-685c-4bc7-8a14-5b9a8103adf4)
+
 PHP Client to retrieve informations from a GPSD service.
 More informations about GPSD: http://catb.org/gpsd/
 
