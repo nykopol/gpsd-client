@@ -89,7 +89,7 @@ class Client
 
     /**
      * Get the next message of the given class (TPV, AIS, SKY, ...)
-     * @param string $class Classe name of the desired message
+     * @param string $class Class name of the desired message or null for any message class
      * @param bool $buffer get the next message from buffer or the next one in time
      * @param bool $blocking use stream bocking mode or not (block until next or return null if nothing new)
      * @return
@@ -112,7 +112,7 @@ class Client
         // get next message
         while(1){
             $message = fgets($this->stream);
-            if(false !== strpos($message, $class)){
+            if(is_null($class) || false !== strpos($message, $class)) {
                 return $message;
             }
         }
